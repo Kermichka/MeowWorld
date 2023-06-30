@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>MeowWorld</title>
+    <style>
+        .navbar {
+            opacity: 0.8;
+        }
+
+        .navbar-nav {
+            margin: auto;
+        }
+
+        .nav-link {
+            margin-right: 20px;
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: white;
+        }
+
+        .boxes {
+            height: 400px;
+            margin: 20px;
+            padding: 5px;
+            background-color: rgb(208, 208, 208);
+            color: black;
+            font-size: 40px;
+            transition: all 0.3s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            font-family: 'Times New Roman';
+        }
+
+        .boxes.box1 {
+            background-image: url('shopPhotos/catFood.jpeg');
+        }
+
+        .boxes.box2 {
+            background-image: url('shopPhotos/catFood2.jpeg');
+        }
+
+        .boxes.box3 {
+            background-image: url('shopPhotos/catFood3.jpeg');
+        }
+
+        .boxes:hover {
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            transform: scale(1.05);
+        }
+
+        .text-rows {
+            margin: 30px;
+        }
+
+        .text-rows h1 {
+            font-size: 40px;
+            font-weight: 400;
+        }
+
+        .text-rows li {
+            font-size: 30px;
+            font-weight: 300;
+        }
+
+        .text-rows p {
+            font-size: 30px;
+            font-weight: 300;
+        }
+
+        /* Additional Styles for Small Screens */
+        @media (max-width: 991px) {
+
+            .text-rows h1 {
+                font-size: 30px;
+                font-weight: 400;
+            }
+
+            .text-rows p {
+                font-size: 20px;
+                font-weight: 300;
+            }
+
+        }
+
+        @media (max-width: 767px) {
+
+            .text-rows h1 {
+                font-size: 30px;
+                font-weight: 400;
+            }
+
+            .text-rows p {
+                font-size: 20px;
+                font-weight: 300;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="main.html">
+                <h1>MeowWorld</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="main.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="breeds.html">Breeds</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="entertainment.html">Entertainment</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="shop.html">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="cartToggle" data-bs-toggle="modal" data-bs-target="#cartModal">CART</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="productModalLabel">Product Selection</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>How many products do you want?</p>
+                        <input type="number" id="productCount" class="form-control">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="saveProductsBtn">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="cartModalLabel">Cart</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="cartItems">
+                        <!-- Selected products will be dynamically added here -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="row gx-5">
+                    <div class="col">
+                        <div class="boxes box1" data-bs-toggle="modal" data-bs-target="#productModal">
+                            <a href="#FactsAboutCats">
+                                <p>Meow Mix</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="boxes box2" data-bs-toggle="modal" data-bs-target="#productModal">
+                            <p>9Lives</p>
+                        </div>
+
+                    </div>
+
+                    <div class="col">
+                        <div class="boxes box3" data-bs-toggle="modal" data-bs-target="#productModal">
+                            <p>Instinct</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="Contacts" style="background-color: gray;color:white;" class="row">
+            <div class="col-1"></div>
+            <div class="col text-rows">
+                <h1>ContCAT us</h1>
+                <p>
+                    <br>GSM: +359 88 ### ####
+                    <br>Adress: st. ####, Ruse, Bulgaria
+                </p>
+            </div>
+            <div class="col-1"></div>
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            const products = {
+                meowMix: [0, 549],
+                lives9: [0, 399],
+                instinct: [0, 799],
+            };
+            document.addEventListener("DOMContentLoaded", function () {
+                const saveProductsBtn = document.getElementById("saveProductsBtn");
+                const productCountInput = document.getElementById("productCount");
+                let clickedBox = null; // Variable to store the clicked box
+
+                // Add event listener to each box
+                const boxes = document.querySelectorAll(".boxes");
+                boxes.forEach(function (box) {
+                    box.addEventListener("click", function (event) {
+                        clickedBox = event.currentTarget; // Set the clicked box
+                    });
+                });
+
+                saveProductsBtn.addEventListener("click", function () {
+
+
+                    const productCount = parseInt(productCountInput.value);
+
+                    if (!isNaN(productCount) && clickedBox !== null) {
+                        if (clickedBox.classList.contains("box1")) {
+                            products.meowMix[0] = productCount;
+                        } else if (clickedBox.classList.contains("box2")) {
+                            products.lives9[0] = productCount;
+                        } else if (clickedBox.classList.contains("box3")) {
+                            products.instinct[0] = productCount;
+                        }
+                    }
+
+                    // Do something with the products object, like saving it to a database or displaying it on the page
+                    console.log("Selected products:", products);
+
+                    // Close the modal
+                    const modal = bootstrap.Modal.getInstance(
+                        document.getElementById("productModal")
+                    );
+                    modal.hide();
+
+                });
+            });
+            //cart
+            const cartToggle = document.getElementById("cartToggle");
+            
+            cartToggle.addEventListener("click", function () {
+                showCart();
+            });
+
+            function showCart() {
+                let total = 0;
+                const cartItems = document.getElementById("cartItems");
+                cartItems.innerHTML = ""; // Clear the previous cart items
+
+                for (const product in products) {
+                    total += products[product][0] * products[product][1];
+                    const currentPrice = products[product][1]/100;
+                    const count = products[product][0];
+                    if (count > 0) {
+                        const cartItem = document.createElement("div");
+                        cartItem.classList.add("cart-item");
+                        if(product === "meowMix"){
+                        cartItem.innerHTML = `
+                        <p>Meow Mix food - ${count}, Price per one - ${currentPrice}$</p>
+                        `;}
+                        else if(product === "lives9"){
+                        cartItem.innerHTML = `
+                        <p>9 Lives food - ${count}, Price per one - ${currentPrice}$</p>
+                        `;}
+                        else if(product === "instinct"){
+                        cartItem.innerHTML = `
+                        <p>Instinct - ${count}, Price per one - ${currentPrice}$</p>
+                        `;}
+                        cartItems.appendChild(cartItem);
+                    }
+                }
+                const addTotal = document.createElement("div");
+                
+                addTotal.innerHTML = `
+                        <p>Total - ${total/100}$</p>
+                        `;
+                cartItems.appendChild(addTotal);
+            }
+        </script>
+
+</body>
+
+</html>
