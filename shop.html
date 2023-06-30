@@ -23,6 +23,21 @@
             color: white;
         }
 
+        .row-with-background {
+            background-image: url('shopPhotos/catEating.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 700px;
+        }
+
+        .black-row-white-text {
+            background-color: black;
+            color: white;
+            margin: 0px;
+            padding: 0px;
+        }
+
         .boxes {
             height: 400px;
             margin: 20px;
@@ -55,7 +70,7 @@
         }
 
         .text-rows {
-            margin: 30px;
+            padding: 30px;
         }
 
         .text-rows h1 {
@@ -129,14 +144,16 @@
                         <a class="nav-link" href="shop.html">Shop</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" id="cartToggle" data-bs-toggle="modal" data-bs-target="#cartModal">CART</a>
+                        <a class="nav-link" href="#" id="cartToggle" data-bs-toggle="modal"
+                            data-bs-target="#cartModal">CART</a>
                     </li>
-                    
+
                 </ul>
             </div>
         </div>
     </nav>
     <div class="container-fluid">
+
         <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -173,29 +190,38 @@
                 </div>
             </div>
         </div>
-
+        <div class="row row-with-background"></div>
+            <div class="container">
+                <div class="row text-rows">
+                    <h1>Shopping online for cats</h1>
+                    <p>Welcome to MeowWorld's Cat Food Shop! We offer a premium selection of high-quality cat
+                        food products to keep your feline companions happy and healthy. From wet food to dry kibble,
+                        we have the perfect options to satisfy even the pickiest eaters. Shop with confidence knowing
+                        that each product is carefully curated to meet your cat's nutritional needs. Discover the best
+                        for your furry friends at MeowWorld's Cat Food Shop.</p>
+                </div>
+            </div>
         <div class="container">
-            <div class="row">
+            <div class="row text-rows">
                 <div class="row gx-5">
                     <div class="col">
                         <div class="boxes box1" data-bs-toggle="modal" data-bs-target="#productModal">
-                            <a href="#FactsAboutCats">
-                                <p>Meow Mix</p>
-                            </a>
+
                         </div>
+                        <p>Meow Mix 5.49$</p>
                     </div>
                     <div class="col">
                         <div class="boxes box2" data-bs-toggle="modal" data-bs-target="#productModal">
-                            <p>9Lives</p>
-                        </div>
 
+                        </div>
+                        <p>9Lives 3.99$</p>
                     </div>
 
                     <div class="col">
                         <div class="boxes box3" data-bs-toggle="modal" data-bs-target="#productModal">
-                            <p>Instinct</p>
-                        </div>
 
+                        </div>
+                        <p>Instinct 7.99$</p>
                     </div>
                 </div>
             </div>
@@ -261,7 +287,7 @@
             });
             //cart
             const cartToggle = document.getElementById("cartToggle");
-            
+
             cartToggle.addEventListener("click", function () {
                 showCart();
             });
@@ -273,30 +299,33 @@
 
                 for (const product in products) {
                     total += products[product][0] * products[product][1];
-                    const currentPrice = products[product][1]/100;
+                    const currentPrice = products[product][1] / 100;
                     const count = products[product][0];
                     if (count > 0) {
                         const cartItem = document.createElement("div");
                         cartItem.classList.add("cart-item");
-                        if(product === "meowMix"){
-                        cartItem.innerHTML = `
+                        if (product === "meowMix") {
+                            cartItem.innerHTML = `
                         <p>Meow Mix food - ${count}, Price per one - ${currentPrice}$</p>
-                        `;}
-                        else if(product === "lives9"){
-                        cartItem.innerHTML = `
+                        `;
+                        }
+                        else if (product === "lives9") {
+                            cartItem.innerHTML = `
                         <p>9 Lives food - ${count}, Price per one - ${currentPrice}$</p>
-                        `;}
-                        else if(product === "instinct"){
-                        cartItem.innerHTML = `
+                        `;
+                        }
+                        else if (product === "instinct") {
+                            cartItem.innerHTML = `
                         <p>Instinct - ${count}, Price per one - ${currentPrice}$</p>
-                        `;}
+                        `;
+                        }
                         cartItems.appendChild(cartItem);
                     }
                 }
                 const addTotal = document.createElement("div");
-                
+
                 addTotal.innerHTML = `
-                        <p>Total - ${total/100}$</p>
+                        <p>Total - ${total / 100}$</p>
                         `;
                 cartItems.appendChild(addTotal);
             }
