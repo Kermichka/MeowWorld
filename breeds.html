@@ -140,118 +140,156 @@
     </nav>
     <div class="container-fluid">
         <div class="row row-with-background"></div>
-        <div style="background-color: rgb(231, 214, 193);" class="row">
-            <div class="col-1"></div>
-            <div id="FactsAboutCats" class="col text-rows">
-                <h1>How did different breeds of cats appear?</h1>
-                <p>
-                    Different cat breeds have emerged through a combination of natural
-                    selection and deliberate breeding by humans. Initially,
-                    domestic cats developed variations in appearance and traits through natural processes.
-                    As humans began to live closely with cats, specific characteristics became favored in different
-                    regions based on
-                    environmental factors. Over time, humans intentionally bred cats with desired traits, resulting in
-                    distinct breeds.
-                    Through selective breeding and careful record-keeping, breeders established consistent traits within
-                    specific lineages,
-                    leading to the recognition of various cat breeds by registries and associations. Responsible
-                    breeders prioritize the cats'
-                    health and well-being, ensuring genetic diversity and maintaining breed vitality.
-                </p>
-            </div>
-            <div class="col-1"></div>
-        </div>
-        <div style="background-color: rgb(231, 214, 193);" class="row">
-            <div class="col-4"></div>
-            <div class="col boxes" onclick="navigateToURL('#MostPopular')">
-                <p>Most popular</p>
-            </div>
-            <div class="col boxes" onclick="navigateToURL('#MostExpensive')">
-                <p>Most expensive</p>
-            </div>
-            <div class="col-4"></div>
-        </div>
-        <div id="MostPopular" class="row">
-            <div class="col-1"></div>
-            <div class="col-3">
-                <div id="changingPhotos" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="background-image" style="background-image: url('breedsPhotos/persianCat.jpg');"></div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="background-image" style="background-image: url('breedsPhotos/mainCoon.jpg');"></div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="background-image" style="background-image: url('breedsPhotos/siameseCat.png');"></div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="background-image" style="background-image: url('breedsPhotos/ragDollCat.jpg');"></div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="background-image" style="background-image: url('breedsPhotos/bengalCat.jpeg');"></div>
-                        </div>
+        <div style="background-color: rgb(231, 214, 193);">
+            <div class="container">
+                <div class="row">
+                    <div id="FactsAboutCats" class="col text-rows">
+                        <h1>How did different breeds of cats appear?</h1>
+                        <p>
+                            Different cat breeds have emerged through a combination of natural
+                            selection and deliberate breeding by humans. Initially,
+                            domestic cats developed variations in appearance and traits through natural processes.
+                            As humans began to live closely with cats, specific characteristics became favored in
+                            different
+                            regions based on
+                            environmental factors. Over time, humans intentionally bred cats with desired traits,
+                            resulting
+                            in
+                            distinct breeds.
+                            Through selective breeding and careful record-keeping, breeders established consistent
+                            traits
+                            within
+                            specific lineages,
+                            leading to the recognition of various cat breeds by registries and associations. Responsible
+                            breeders prioritize the cats'
+                            health and well-being, ensuring genetic diversity and maintaining breed vitality.
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="col-7 text-rows">
-                <h1>Most popular cats</h1>
-                <ul>
-                    <li>Persian: Known for their long, luxurious coats and sweet personalities, Persian cats are one of
-                        the most popular cat breeds worldwide.</li>
-                    <li>Maine Coon: Maine Coons are large, gentle cats with tufted ears and bushy tails. They are known
-                        for their friendly and sociable nature.</li>
-                    <li>Siamese: Siamese cats are known for their striking blue almond-shaped eyes and sleek, short
-                        coats. They are highly intelligent and vocal cats, often forming strong bonds with their human
-                        companions.</li>
-                    <li>Ragdoll: Ragdolls are large, semi-longhaired cats with striking blue eyes. They have a docile
-                        and gentle nature, often going limp when picked up, hence the name "Ragdoll."</li>
-                    <li>Bengal: Bengal cats are known for their distinctive coat patterns, which resemble those of wild
-                        leopard cats. They have an active and playful temperament and enjoy interactive play.</li>
-                </ul>
-            </div>
-            <div class="col-1"></div>
         </div>
-        <div style="background-color: rgb(0, 0, 0); color:white;" id="MostExpensive" class="row">
-            <div class="col-1"></div>
-            <div class="col-7 text-rows">
-                <h1>Most expensive cats</h1>
-                <ul>
-                    <li>Ashera: The Ashera breed, known for its exotic appearance and alleged mix of wild and domestic traits, 
-                        was reported to be one of the most expensive cats. Prices ranged from $22,000 to $125,000, 
-                        depending on the specific features and rarity of the cat.</li>
-                    <li>Bengal: Bengal cats, bred to resemble the appearance of wild Asian leopard cats, can also be quite expensive. 
-                        Prices can range from a few thousand dollars to tens of thousands of dollars, depending on factors such as lineage, 
-                        markings, and quality.</li>
-                    <li>Savannah: Savannah cats, created by crossing a domestic cat with a serval, are known for their exotic appearance.
-                        Prices for Savannah kittens can vary, with higher generations and more serval ancestry generally commanding higher prices,
-                        ranging from several thousand dollars to over $20,000</li>
-                </ul>
+
+        <div style="background-color: rgb(231, 214, 193);">
+            <div class="container">
+                <div class="row">
+                    <a class="col boxes" href="#MostPopular">
+                        <p>Most popular</p>
+                    </a>
+                    <a class="col boxes" href="#MostExpensive">
+                        <p>Most expensive</p>
+                    </a>
+                </div>
             </div>
-            <div style="background-image: url('breedsPhotos/asheraCat.png');"class="background-image col-3">
-            </div>
-            <div class="col-1"></div>
         </div>
-        <div id="Contacts" style="background-color: gray; color:white;" class="row">
-            <div class="col-1"></div>
-            <div class="col text-rows">
-                <h1>Contact us</h1>
-                <p>
-                    <br>GSM: +359 88 ### ####
-                    <br>Address: st. ####, Ruse, Bulgaria
-                </p>
+        <div class="container">
+            <div id="MostPopular" class="row">
+                <div class="col-3">
+                    <div id="changingPhotos" class="carousel slide carousel-fade" data-bs-ride="carousel"
+                        data-bs-interval="3000">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="background-image"
+                                    style="background-image: url('breedsPhotos/persianCat.jpg');">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="background-image"
+                                    style="background-image: url('breedsPhotos/mainCoon.jpg');">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="background-image"
+                                    style="background-image: url('breedsPhotos/siameseCat.png');">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="background-image"
+                                    style="background-image: url('breedsPhotos/ragDollCat.jpg');">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="background-image"
+                                    style="background-image: url('breedsPhotos/bengalCat.jpeg');">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-7 text-rows">
+                    <h1>Most popular cats</h1>
+                    <ul>
+                        <li>Persian: Known for their long, luxurious coats and sweet personalities, Persian cats are one
+                            of
+                            the most popular cat breeds worldwide.</li>
+                        <li>Maine Coon: Maine Coons are large, gentle cats with tufted ears and bushy tails. They are
+                            known
+                            for their friendly and sociable nature.</li>
+                        <li>Siamese: Siamese cats are known for their striking blue almond-shaped eyes and sleek, short
+                            coats. They are highly intelligent and vocal cats, often forming strong bonds with their
+                            human
+                            companions.</li>
+                        <li>Ragdoll: Ragdolls are large, semi-longhaired cats with striking blue eyes. They have a
+                            docile
+                            and gentle nature, often going limp when picked up, hence the name "Ragdoll."</li>
+                        <li>Bengal: Bengal cats are known for their distinctive coat patterns, which resemble those of
+                            wild
+                            leopard cats. They have an active and playful temperament and enjoy interactive play.</li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-1"></div>
+        </div>
+        <div style="background-color: rgb(0, 0, 0); color:white;" id="MostExpensive">
+            <div class="container">
+                <div class="row">
+                    <div class="col-7 text-rows">
+                        <h1>Most expensive cats</h1>
+                        <ul>
+                            <li>Ashera: The Ashera breed, known for its exotic appearance and alleged mix of wild and
+                                domestic
+                                traits,
+                                was reported to be one of the most expensive cats. Prices ranged from $22,000 to
+                                $125,000,
+                                depending on the specific features and rarity of the cat.</li>
+                            <li>Bengal: Bengal cats, bred to resemble the appearance of wild Asian leopard cats, can
+                                also be
+                                quite expensive.
+                                Prices can range from a few thousand dollars to tens of thousands of dollars, depending
+                                on
+                                factors such as lineage,
+                                markings, and quality.</li>
+                            <li>Savannah: Savannah cats, created by crossing a domestic cat with a serval, are known for
+                                their
+                                exotic appearance.
+                                Prices for Savannah kittens can vary, with higher generations and more serval ancestry
+                                generally
+                                commanding higher prices,
+                                ranging from several thousand dollars to over $20,000</li>
+                        </ul>
+                    </div>
+                    <div style="background-image: url('breedsPhotos/asheraCat.png');" class="background-image col-3">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style=" background-color: gray;color:white;">
+            <div class="container">
+                <div id="Contacts" class="row">
+
+                    <div class="col text-rows">
+                        <h1>ContCAT us</h1>
+                        <p>
+                            <br>GSM: +359 88 ### ####
+                            <br>Adress: st. ####, Ruse, Bulgaria
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        function navigateToURL(url) {
-            window.location.href = url;
-        }
-    </script>
 </body>
 
 </html>
