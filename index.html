@@ -49,7 +49,7 @@
         .boxes {
             height: 400px;
             padding: 5px;
-            background-color: rgb(208, 208, 208);
+            background-color: rgb(255, 255, 255);
             color: black;
             font-size: 40px;
             transition: all 0.3s ease-in-out;
@@ -113,7 +113,7 @@
         .col-custom {
             width: 450px;
         }
-
+        
         /* Additional Styles for Small Screens */
         @media (max-width: 991px) {
             .row-with-background {
@@ -231,7 +231,7 @@
                 </div>
                 <div class="col">
                     <a href="#WhyLoveCats">
-                        <div class="boxes box1">
+                        <div class="boxes box2">
                             <p>Why Love Cats?</p>
                         </div>
                     </a>
@@ -239,82 +239,74 @@
 
                 <div class="col">
                     <a href="#Contacts">
-                        <div class="boxes box1">
+                        <div class="boxes box3">
                             <p>ContCAT us</p>
                         </div>
                     </a>
                 </div>
             </div>
         </div>
-        <div style="background-color: rgb(231, 214, 193);" class="row">
-            <div id="FactsAboutCats" class="col text-rows">
-                <h1>Facts about Cats</h1>
-                <ul>
-                    <li>
-                        Cats have exceptional hearing and can locate the source of sounds accurately.
-                    </li>
-                    <li>
-                        Cats possess remarkable agility and balance,
-                        enabling them to navigate narrow spaces and climb with ease.
-                    </li>
-                    <li>
-                        Cats have retractable claws, which help them keep their claws sharp and adapt to various
-                        surfaces.
-                    </li>
-                </ul>
+        <div style="background-color: rgb(231, 214, 193);">
+            <div class="container">
+                <div class="row">
+                    <div id="FactsAboutCats" class="col text-rows ">
+                        <h1>Facts about Cats</h1>
+                        <ul>
+                            <li>
+                                Cats have exceptional hearing and can locate the source of sounds accurately.
+                            </li>
+                            <li>
+                                Cats possess remarkable agility and balance,
+                                enabling them to navigate narrow spaces and climb with ease.
+                            </li>
+                            <li>
+                                Cats have retractable claws, which help them keep their claws sharp and adapt to various
+                                surfaces.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-        <div id="WhyLoveCats" class="row ">
-            <div class="col-7 text-rows">
-                <h1>Why love cats?</h1>
-                <ul>
-                    <li>Companionship: Cats make wonderful companions.
-                        They are often affectionate and can provide comfort and emotional support to their owners.
-                        Many people enjoy the companionship and bond they develop with their cats.</li>
-                    <li>Independent nature: Cats are known for their independent and self-reliant nature.
-                        They are generally low-maintenance pets compared to dogs, and some people appreciate their
-                        ability to entertain themselves and be more self-sufficient.</li>
-                    <li>Playfulness and entertainment: Cats are naturally playful creatures.
-                        Their curious and agile nature can be entertaining to watch, and they often engage in activities
-                        that amuse their owners. Their antics can bring joy and laughter to a household.</li>
-                </ul>
+        <div id="WhyLoveCats" class="container">
+            <div class="row">
+                <div class="col-7 text-rows">
+                    <h1>Why love cats?</h1>
+                    <ul>
+                        <li>Companionship: Cats make wonderful companions.
+                            They are often affectionate and can provide comfort and emotional support to their owners.
+                            Many people enjoy the companionship and bond they develop with their cats.</li>
+                        <li>Independent nature: Cats are known for their independent and self-reliant nature.
+                            They are generally low-maintenance pets compared to dogs, and some people appreciate their
+                            ability to entertain themselves and be more self-sufficient.</li>
+                        <li>Playfulness and entertainment: Cats are naturally playful creatures.
+                            Their curious and agile nature can be entertaining to watch, and they often engage in
+                            activities
+                            that amuse their owners. Their antics can bring joy and laughter to a household.</li>
+                    </ul>
+                </div>
+
+                <div style="background-image: url('mainPhotos/secondRowCat.png'); background-repeat: no-repeat;background-size: cover;background-position: center;"
+                    class="col-3"></div>
             </div>
-            <div style="background-image: url('mainPhotos/secondRowCat.png'); background-repeat: no-repeat;background-size: cover;background-position: center;"
-                class="col-3"></div>
         </div>
-        <div id="Contacts" style="background-color: gray;color:white;" class="row">
-            <div class="col-1"></div>
-            <div class="col text-rows">
-                <h1>ContCAT us</h1>
-                <p>
-                    <br>GSM: +359 88 ### ####
-                    <br>Adress: st. ####, Ruse, Bulgaria
-                </p>
+        <div style=" background-color: gray;color:white;">
+            <div class="container">
+                <div id="Contacts" class="row">
+
+                    <div class="col text-rows">
+                        <h1>ContCAT us</h1>
+                        <p>
+                            <br>GSM: +359 88 ### ####
+                            <br>Adress: st. ####, Ruse, Bulgaria
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="col-1"></div>
         </div>
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-        <script>
-            function navigateToURL(url) {
-                window.location.href = url;
-            }
-            function handleResize() {
-                const smallWidth = 991;
-                const screenWidth = window.innerWidth;
-                const textContainer = document.getElementById('textContainer');
-
-                if (screenWidth <= smallWidth) {
-                    textContainer.classList.remove('d-none');
-                } else {
-                    textContainer.classList.add('d-none');
-                }
-            }
-
-            // window.addEventListener('resize', handleResize);
-            // handleResize(); // Call initially to check the screen width on page load
-        </script>
         <div> </div>
 </body>
 
