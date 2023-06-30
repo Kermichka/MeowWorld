@@ -113,7 +113,7 @@
 <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="main.html">
+            <a class="navbar-brand" href="index.html">
                 <h1>MeowWorld</h1>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -123,13 +123,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="main.html">Home</a>
+                        <a class="nav-link" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="breeds.html">Breeds</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="entertainment.html">Entertainment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="shop.html">Shop</a>
                     </li>
                 </ul>
             </div>
@@ -171,7 +174,7 @@
         <div id="MostPopular" class="row">
             <div class="col-1"></div>
             <div class="col-3">
-                <div id="changingPhotos" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div id="changingPhotos" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="background-image" style="background-image: url('breedsPhotos/persianCat.jpg');"></div>
@@ -248,10 +251,6 @@
         function navigateToURL(url) {
             window.location.href = url;
         }
-        var carousel = document.getElementById('changingPhotos');
-        var carouselInstance = new bootstrap.Carousel(carousel, {
-            interval: 3000,
-        });
     </script>
 </body>
 
