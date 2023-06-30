@@ -191,16 +191,16 @@
             </div>
         </div>
         <div class="row row-with-background"></div>
-            <div class="container">
-                <div class="row text-rows">
-                    <h1>Shopping online for cats</h1>
-                    <p>Welcome to MeowWorld's Cat Food Shop! We offer a premium selection of high-quality cat
-                        food products to keep your feline companions happy and healthy. From wet food to dry kibble,
-                        we have the perfect options to satisfy even the pickiest eaters. Shop with confidence knowing
-                        that each product is carefully curated to meet your cat's nutritional needs. Discover the best
-                        for your furry friends at MeowWorld's Cat Food Shop.</p>
-                </div>
+        <div class="container">
+            <div class="row text-rows">
+                <h1>Shopping online for cats</h1>
+                <p>Welcome to MeowWorld's Cat Food Shop! We offer a premium selection of high-quality cat
+                    food products to keep your feline companions happy and healthy. From wet food to dry kibble,
+                    we have the perfect options to satisfy even the pickiest eaters. Shop with confidence knowing
+                    that each product is carefully curated to meet your cat's nutritional needs. Discover the best
+                    for your furry friends at MeowWorld's Cat Food Shop.</p>
             </div>
+        </div>
         <div class="container">
             <div class="row text-rows">
                 <div class="row gx-5">
@@ -249,6 +249,7 @@
                 lives9: [0, 399],
                 instinct: [0, 799],
             };
+
             document.addEventListener("DOMContentLoaded", function () {
                 const saveProductsBtn = document.getElementById("saveProductsBtn");
                 const productCountInput = document.getElementById("productCount");
@@ -262,9 +263,18 @@
                     });
                 });
 
+                // Load products from localStorage on page load
+                const savedProducts = localStorage.getItem("products");
+                if (savedProducts) {
+                    try {
+                        const parsedProducts = JSON.parse(savedProducts);
+                        Object.assign(products, parsedProducts);
+                    } catch (error) {
+                        console.error("Error parsing saved products data.");
+                    }
+                }
+
                 saveProductsBtn.addEventListener("click", function () {
-
-
                     const productCount = parseInt(productCountInput.value);
 
                     if (!isNaN(productCount) && clickedBox !== null) {
@@ -277,61 +287,71 @@
                         }
                     }
 
-                    // Do something with the products object, like saving it to a database or displaying it on the page
-                    console.log("Selected products:", products);
-
+                    // Save products to localStorage
+                    localStorage.setItem("products", JSON.stringify(products));
+                    
                     // Close the modal
                     const modal = bootstrap.Modal.getInstance(
                         document.getElementById("productModal")
                     );
                     modal.hide();
-
+                    productCountInput.value = "";
                 });
-            });
-            //cart
-            const cartToggle = document.getElementById("cartToggle");
+                const cartToggle = document.getElementById("cartToggle");
 
-            cartToggle.addEventListener("click", function () {
-                showCart();
-            });
+                cartToggle.addEventListener("click", function () {
+                    showCart();
+                });
 
-            function showCart() {
-                let total = 0;
-                const cartItems = document.getElementById("cartItems");
-                cartItems.innerHTML = ""; // Clear the previous cart items
-
-                for (const product in products) {
-                    total += products[product][0] * products[product][1];
-                    const currentPrice = products[product][1] / 100;
-                    const count = products[product][0];
-                    if (count > 0) {
-                        const cartItem = document.createElement("div");
-                        cartItem.classList.add("cart-item");
-                        if (product === "meowMix") {
-                            cartItem.innerHTML = `
-                        <p>Meow Mix food - ${count}, Price per one - ${currentPrice}$</p>
-                        `;
-                        }
-                        else if (product === "lives9") {
-                            cartItem.innerHTML = `
-                        <p>9 Lives food - ${count}, Price per one - ${currentPrice}$</p>
-                        `;
-                        }
-                        else if (product === "instinct") {
-                            cartItem.innerHTML = `
-                        <p>Instinct - ${count}, Price per one - ${currentPrice}$</p>
-                        `;
-                        }
-                        cartItems.appendChild(cartItem);
-                    }
+                function removeFromCart(product) {
+                    products[product][0] = 0;
+                    showCart(); // Update the cart display
                 }
-                const addTotal = document.createElement("div");
 
-                addTotal.innerHTML = `
-                        <p>Total - ${total / 100}$</p>
-                        `;
-                cartItems.appendChild(addTotal);
-            }
+                function showCart() {
+                    let total = 0;
+                    const cartItems = document.getElementById("cartItems");
+                    cartItems.innerHTML = ""; // Clear the previous cart items
+
+                    for (const product in products) {
+                        total += products[product][0] * products[product][1];
+                        const currentPrice = products[product][1] / 100;
+                        const count = products[product][0];
+                        if (count > 0) {
+                            const cartItem = document.createElement("div");
+                            cartItem.classList.add("cart-item");
+                            if (product === "meowMix") {
+                                cartItem.innerHTML = `
+                        <p>Meow Mix food - ${count}, Price per one - ${currentPrice}$</p>
+                      `;
+                            } else if (product === "lives9") {
+                                cartItem.innerHTML = `
+                        <p>9 Lives food - ${count}, Price per one - ${currentPrice}$</p>
+                      `;
+                            } else if (product === "instinct") {
+                                cartItem.innerHTML = `
+                        <p>Instinct - ${count}, Price per one - ${currentPrice}$</p>
+                      `;
+                            }
+                            // Create a remove button for each cart item in the modal
+                            const removeButton = document.createElement("button");
+                            removeButton.innerText = "Remove";
+                            removeButton.addEventListener("click", function () {
+                                removeFromCart(product);
+                            });
+                            cartItem.appendChild(removeButton);
+
+                            cartItems.appendChild(cartItem);
+                        }
+                    }
+
+                    const addTotal = document.createElement("div");
+                    addTotal.innerHTML = `
+                  <p>Total - ${total / 100}$</p>
+                `;
+                    cartItems.appendChild(addTotal);
+                }
+            });
         </script>
 
 </body>
