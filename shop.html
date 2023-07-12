@@ -262,7 +262,7 @@
                 const saveProductsBtn = document.getElementById("saveProductsBtn");
                 const productCountInput = document.getElementById("productCount");
                 let clickedBox = null; // Variable to store the clicked box
-                
+
                 // Add event listener to each box
                 const boxes = document.querySelectorAll(".boxes");
                 boxes.forEach(function (box) {
@@ -298,10 +298,11 @@
                         console.error("Error parsing saved products data.");
                     }
                 }
+
                 productCountInput.addEventListener("input", function () {
                     const productCount = parseInt(productCountInput.value);
                     let total = 0;
-                    
+
 
                     if (!isNaN(productCount) && clickedBox !== null) {
                         if (clickedBox.classList.contains("box1")) {
@@ -350,7 +351,8 @@
 
                 function removeFromCart(product) {
                     products[product][0] = 0;
-                    showCart(); // Update the cart display
+                    showCart();
+                    localStorage.setItem("products", JSON.stringify(products));
                 }
                 function getTotal() {
                     let total = 0;
@@ -359,51 +361,77 @@
                     }
                     return total;
                 }
+
                 function showCart() {
                     let total = 0;
                     const cartItems = document.getElementById("cartItems");
                     cartItems.innerHTML = ""; // Clear the previous cart items
+                    const isEmpty = isCartEmpty();
 
-                    for (const product in products) {
-                        total += products[product][0] * products[product][1];
-                        const currentPrice = products[product][1] / 100;
-                        const count = products[product][0];
-                        if (count > 0) {
-                            const cartItem = document.createElement("div");
-                            cartItem.classList.add("cart-item");
-                            if (product === "meowMix") {
-                                cartItem.innerHTML = `
+                    if (isEmpty) {
+                        // Display a message and an "Add Product" button
+                        const emptyCartMessage = document.createElement("p");
+                        emptyCartMessage.textContent = "Your cart is empty. Do you want to add 1 Meow Mix - $5.49?";
+                        const addButton = document.createElement("button");
+                        addButton.textContent = "Add Product";
+                        addButton.addEventListener("click", function () {
+                            products.meowMix[0]=1;
+                            showCart();
+                        });
+                        cartItems.appendChild(emptyCartMessage);
+                        cartItems.appendChild(addButton);
+                    }
+                    else {
+                        for (const product in products) {
+                            total += products[product][0] * products[product][1];
+                            const currentPrice = products[product][1] / 100;
+                            const count = products[product][0];
+                            if (count > 0) {
+                                const cartItem = document.createElement("div");
+                                cartItem.classList.add("cart-item");
+                                if (product === "meowMix") {
+                                    cartItem.innerHTML = `
                         <p>Meow Mix food - ${count}, Price per one - ${currentPrice}$</p>
                       `;
-                            } else if (product === "lives9") {
-                                cartItem.innerHTML = `
+                                } else if (product === "lives9") {
+                                    cartItem.innerHTML = `
                         <p>9 Lives food - ${count}, Price per one - ${currentPrice}$</p>
                       `;
-                            } else if (product === "instinct") {
-                                cartItem.innerHTML = `
+                                } else if (product === "instinct") {
+                                    cartItem.innerHTML = `
                         <p>Instinct - ${count}, Price per one - ${currentPrice}$</p>
                       `;
+                                }
+                                // Create a remove button for each cart item in the modal
+                                const removeButton = document.createElement("button");
+                                removeButton.innerText = "Remove";
+                                removeButton.addEventListener("click", function () {
+                                    removeFromCart(product);
+                                });
+                                cartItem.appendChild(removeButton);
+
+                                cartItems.appendChild(cartItem);
                             }
-                            // Create a remove button for each cart item in the modal
-                            const removeButton = document.createElement("button");
-                            removeButton.innerText = "Remove";
-                            removeButton.addEventListener("click", function () {
-                                removeFromCart(product);
-                            });
-                            cartItem.appendChild(removeButton);
-
-                            cartItems.appendChild(cartItem);
                         }
-                    }
 
-                    const addTotal = document.createElement("div");
-                    addTotal.innerHTML = `
+                        const addTotal = document.createElement("div");
+                        addTotal.innerHTML = `
                   <p>Total - ${total / 100}$</p>
                 `;
-                    cartItems.appendChild(addTotal);
+                        cartItems.appendChild(addTotal);
+
+                    }
                     updateCartPrice(total);
                 }
             });
+            function isCartEmpty() {
+                for (const product in products) {
+                    if (products[product][0] > 0) {
+                        return false;
+                    }
+                }
+                return true;
+            }
             function updateCartPrice(price) {
                 const cartPriceElement = document.getElementById("cartPrice");
                 cartPriceElement.innerText = `($${price / 100})`;
