@@ -144,9 +144,11 @@
                         <a class="nav-link" href="shop.html">Shop</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" id="cartToggle" data-bs-toggle="modal"
-                            data-bs-target="#cartModal">CART</a>
+                        <a class="nav-link" href="#" id="cartToggle" data-bs-toggle="modal" data-bs-target="#cartModal">
+                            CART <span id="cartPrice"></span>
+                        </a>
                     </li>
+
 
                 </ul>
             </div>
@@ -164,7 +166,10 @@
                     </div>
                     <div class="modal-body">
                         <p>How many products do you want?</p>
+                        <p id="productName"></p>
+                        <p id="productPrice"></p>
                         <input type="number" id="productCount" class="form-control">
+                        <p id="total"></p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -205,20 +210,23 @@
             <div class="row text-rows">
                 <div class="row gx-5">
                     <div class="col">
-                        <div class="boxes box1" data-bs-toggle="modal" data-bs-target="#productModal">
+                        <div class="boxes box1" data-bs-toggle="modal" data-bs-target="#productModal"
+                            data-product="Meow Mix">
 
                         </div>
                         <p>Meow Mix 5.49$</p>
                     </div>
                     <div class="col">
-                        <div class="boxes box2" data-bs-toggle="modal" data-bs-target="#productModal">
+                        <div class="boxes box2" data-bs-toggle="modal" data-bs-target="#productModal"
+                            data-product="9Lives">
 
                         </div>
                         <p>9Lives 3.99$</p>
                     </div>
 
                     <div class="col">
-                        <div class="boxes box3" data-bs-toggle="modal" data-bs-target="#productModal">
+                        <div class="boxes box3" data-bs-toggle="modal" data-bs-target="#productModal"
+                            data-product="Instinct">
 
                         </div>
                         <p>Instinct 7.99$</p>
@@ -254,12 +262,29 @@
                 const saveProductsBtn = document.getElementById("saveProductsBtn");
                 const productCountInput = document.getElementById("productCount");
                 let clickedBox = null; // Variable to store the clicked box
-
+                
                 // Add event listener to each box
                 const boxes = document.querySelectorAll(".boxes");
                 boxes.forEach(function (box) {
                     box.addEventListener("click", function (event) {
+                        let total = 0;
                         clickedBox = event.currentTarget; // Set the clicked box
+                        const productName = clickedBox.getAttribute("data-product");
+                        document.getElementById("productName").textContent = productName;
+                        if (productName === "Meow Mix") {
+                            document.getElementById("productPrice").textContent = `$${products.meowMix[1] / 100}`;
+
+                        }
+                        else if (productName === "9Lives") {
+                            document.getElementById("productPrice").textContent = `$${products.lives9[1] / 100}`;
+                            tempPrice = products.lives9[1];
+                        }
+                        else if (productName === "Instinct") {
+                            document.getElementById("productPrice").textContent = `$${products.instinct[1] / 100}`;
+                            tempPrice = products.instinct[1];
+                        }
+                        total = getTotal();
+                        document.getElementById("total").textContent = `Total - $${total / 100}`;
                     });
                 });
 
@@ -273,6 +298,24 @@
                         console.error("Error parsing saved products data.");
                     }
                 }
+                productCountInput.addEventListener("input", function () {
+                    const productCount = parseInt(productCountInput.value);
+                    let total = 0;
+                    
+
+                    if (!isNaN(productCount) && clickedBox !== null) {
+                        if (clickedBox.classList.contains("box1")) {
+                            products.meowMix[0] = productCount;
+                        } else if (clickedBox.classList.contains("box2")) {
+                            products.lives9[0] = productCount;
+                        } else if (clickedBox.classList.contains("box3")) {
+                            products.instinct[0] = productCount;
+                        }
+                    }
+
+                    total = getTotal();
+                    document.getElementById("total").textContent = `Total - $${total / 100}`;
+                });
 
                 saveProductsBtn.addEventListener("click", function () {
                     const productCount = parseInt(productCountInput.value);
@@ -289,13 +332,15 @@
 
                     // Save products to localStorage
                     localStorage.setItem("products", JSON.stringify(products));
-                    
+
                     // Close the modal
                     const modal = bootstrap.Modal.getInstance(
                         document.getElementById("productModal")
                     );
                     modal.hide();
+
                     productCountInput.value = "";
+                    updateCartPrice(getTotal());
                 });
                 const cartToggle = document.getElementById("cartToggle");
 
@@ -307,7 +352,13 @@
                     products[product][0] = 0;
                     showCart(); // Update the cart display
                 }
-
+                function getTotal() {
+                    let total = 0;
+                    for (const product in products) {
+                        total += products[product][0] * products[product][1];
+                    }
+                    return total;
+                }
                 function showCart() {
                     let total = 0;
                     const cartItems = document.getElementById("cartItems");
@@ -350,8 +401,13 @@
                   <p>Total - ${total / 100}$</p>
                 `;
                     cartItems.appendChild(addTotal);
+                    updateCartPrice(total);
                 }
             });
+            function updateCartPrice(price) {
+                const cartPriceElement = document.getElementById("cartPrice");
+                cartPriceElement.innerText = `($${price / 100})`;
+            }
         </script>
 
 </body>
